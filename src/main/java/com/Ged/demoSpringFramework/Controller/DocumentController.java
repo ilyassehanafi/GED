@@ -23,6 +23,11 @@ public class DocumentController {
     @Autowired
     private DocStorageService docStorageService;
 
+    /**
+     * affichage des documents
+     * @param model 
+     * @return
+     */
     @GetMapping("/doc")
     public String get(Model model){
         List<Document> documents = docStorageService.getFiles();
