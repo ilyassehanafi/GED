@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Page enregistrement et de connexion</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <style>
+        *{
+            margin : 0;
+            padding : 0;
+        }
+        body{
+            background : linear-gradient(45deg,#laffff,#4f58ff);
+            font-family: 'Gill Sans','Gill Sans MT' ,Calibri,'Trebuchet MS' , sans-serif;
+        }
+        .center{
+            display: flex;
+            justify-content : center;
+            align-items : center;
+        }
+        .main{
+            width:100%;
+            height:100vh;
+        }
+        .box{
+            width:300px;
+            height:400px;
+            background:white;
+            color: black;
+            margin : 0 20px;
+            overflow: hidden;
+            flex-direction : column;
+            position : relative;
+        }
+        .box div{
+            margin : 5px 0;
+        }
+        .box div input{
+            width: 220px;
+            height: 25px;
+            margin : 5px 0 ;
+            border : none;
+            border-bottom: 1px solid black;
+            outline : none;
+        }
+        .box button{
+            width : 220px;
+            margin-top : 5 px;
+            background : none;
+            border : none;
+            outline : none;
+            background : #4f58ff;
+            color : white;
+            border-radius : 10px;
+            cursor : pointer;
+        }
+        .box h1{
+            margin:60px 0 20px 0 ;
+        }
+        .box .icon{
+            position: absolute;
+            top : -50px;
+            left:0;
+            width:100%;
+            height:100px;
+            border-radius:0 0 50% 50%;
+            background : #4f58ff;
+            box-shadow: 0px 0px 20px rgb(144 , 144 , 144);
+            align-items: flex-end;
+        }
+        .box .icon i{
+            color : white;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- create navigation bar ( header) -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">Module d'inscription et de connexion</a>
+        </div>
+    </div>
+</nav>
+
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 col-md-offset-3">
+            <form th:action="@{/login}" method="post">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">Votre nom d'utilisateur ou votre
+                        mot de passe est incorrecte.</div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">Vous avez été déconnecté.</div>
+                </div>
+
+                <div class="main center">
+                    <div class="box center">
+                        <div class="icon center">
+                            <i class="far fa-user fa-2x"></i>
+                        </div>
+                        <h1> Se connecter</h1>
+                        <div>
+                            <p> Enter email:-</p>
+                            <input type="text" name="username" id="username" placeholder="Entrer l'email" required autofocus="autofocus"/>
+                        </div>
+                        <div>
+                            <p> Entrer le mot de passe:-</p>
+                            <input type="password" name="password" id="password" placeholder="Entrer le mot de passe" required autofocus="autofocus" />
+                        </div>
+                        <button class="btn" type="submit" id="login-submit"> Se connecter</button>
+                        <br>
+                        <span>Vous êtes nouveau ? <a href="/" th:href="@{/registration}">S'inscrire
+                        ici</a></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

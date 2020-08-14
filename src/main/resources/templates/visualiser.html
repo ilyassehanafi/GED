@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:data="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Viewer</title>
+</head>
+<span th:if="${docType} == 'image/jpeg'">
+    <img th:src="@{'data:'+${docType}+';base64,'+${bases}}"/>
+</span>
+<span th:if="${docType} == 'video/mp4'">
+    <video  controls th:src="@{'data:'+${docType}+';base64,'+${bases}}"/>
+</span>
+<span th:if="${docType} == 'application/pdf' ">
+    <object th:type="${docType}" th:data="@{'data:'+${docType}+';base64,'+${bases}}"  width="1920px" height="1080px"  ></object>
+
+</span>
+<span th:if="${docType} == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' ">
+    <object th:type="${docType}" width="1920px" height="1080px" th:data="@{'ViewerJS/data:'+${docType}+';base64,'+${bases}}" ></object>
+</span>
+<span th:if="${docType} == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ">
+    <object th:type="${docType}" width="1920px" height="1080px" th:data="@{'data:'+${docType}+';base64,'+${bases}}" ></object>
+</span>
+<span th:if="${docType} == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ">
+    <object th:type="${docType}" width="1920px" height="1080px" th:data="@{'data:'+${docType}+';base64,'+${bases}}" ></object>
+</span>
+<span th:if="${docType} == 'text/plain' ">
+    <object th:type="${docType}" width="1920px" height="1080px" th:data="@{'data:'+${docType}+';base64,'+${bases}}" ></object>
+</span>
+
+    <body>
+    </body>
+</html>
+
