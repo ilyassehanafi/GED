@@ -5,6 +5,7 @@ import com.Ged.demoSpringFramework.model.Document;
 import com.Ged.demoSpringFramework.repository.DocRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 
